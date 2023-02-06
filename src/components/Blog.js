@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
-const Blog = ({blog, updateLikes, user, removeBlogById}) => {
-const blogStyle = {
-  paddingTop: 8,
-  paddingLeft: 4,
-  border: 'solid',
-  borderWidth: 2,
-  marginBottom: 8
-}
+const Blog = ({ blog, updateLikes, user, removeBlogById }) => {
+  const blogStyle = {
+    paddingTop: 8,
+    paddingLeft: 4,
+    border: 'solid',
+    borderWidth: 2,
+    marginBottom: 8
+  }
 
-const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
 
-const updateBlog = () => {
+  const updateBlog = () => {
     const updateObject = {
       user: blog.user.id,
       likes: blog.likes + 1,
@@ -22,13 +22,13 @@ const updateBlog = () => {
     }
 
     updateLikes(updateObject)
-}
+  }
 
-const removeBlog = () => {
-  removeBlogById(blog)
-}
+  const removeBlog = () => {
+    removeBlogById(blog)
+  }
 
-return (
+  return (
     <div>
       {visible ? (
         <div style={blogStyle}>{blog.title} {blog.author} <button onClick={() => setVisible(false)}>piilota</button>
@@ -42,8 +42,8 @@ return (
         </div> ) : (
         <div style={blogStyle}>{blog.title} {blog.author} <button onClick={() => setVisible(true)}>näytä</button>
         </div>
-        )}
+      )}
     </div>
-)}
+  )}
 
 export default Blog

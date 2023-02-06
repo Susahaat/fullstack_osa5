@@ -12,8 +12,8 @@ const App = () => {
   }
 
   const [blogs, setBlogs] = useState([])
-  const [username, setUsername] = useState('') 
-  const [password, setPassword] = useState('') 
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [confirmationMessage, setConfirmationMessage] = useState(null)
@@ -127,10 +127,10 @@ const App = () => {
 
   const removeBlogById = (blog) => {
     if(window.confirm(`Poista blogi ${blog.title}, kirjoittaja ${blog.author}`)) {
-      blogService.remove(blog.id).then((result) => {
+      blogService.remove(blog.id).then(() => {
         const blogsAfter = blogs.filter(object => object.id !== blog.id)
         setBlogs(blogsAfter)
-        setConfirmationMessage(`Blogi poistettu`)
+        setConfirmationMessage('Blogi poistettu')
         setTimeout(() => {
           setConfirmationMessage(null)
         }, 5000)
@@ -145,19 +145,19 @@ const App = () => {
 
   const ErrorNotification = ({ message }) => {
     if (message === null) {
-      return null;
+      return null
     }
 
-    return <div className="error">{message}</div>;
-  };
+    return <div className="error">{message}</div>
+  }
 
   const OkNotification = ({ message }) => {
     if (message === null) {
-      return null;
+      return null
     }
 
-    return <div className="confirmation">{message}</div>;
-  };
+    return <div className="confirmation">{message}</div>
+  }
 
   if (user === null) {
     return (
@@ -192,10 +192,10 @@ const App = () => {
         {addBlogForm()}
       </div>
       <div>
-      {blogs.sort((a, b) => b.likes - a.likes)
-            .map(blog =>
-          <Blog key={blog.id} blog={blog} updateLikes={updateLikes} user={user} removeBlogById={removeBlogById}/>
-        )}
+        {blogs.sort((a, b) => b.likes - a.likes)
+          .map(blog =>
+            <Blog key={blog.id} blog={blog} updateLikes={updateLikes} user={user} removeBlogById={removeBlogById}/>
+          )}
       </div>
     </div>
   )
