@@ -31,7 +31,7 @@ const Blog = ({ blog, updateLikes, user, removeBlogById }) => {
   return (
     <div>
       {visible ? (
-        <div style={blogStyle}>{blog.title} {blog.author} <button onClick={() => setVisible(false)}>piilota</button>
+        <div style={blogStyle} className='blog'>{blog.title} {blog.author} <button onClick={() => setVisible(false)}>piilota</button>
           <br/>
           {blog.url}<br/>
           tykkäykset {blog.likes} <button onClick={updateBlog}>tykkää</button><br/>
@@ -40,7 +40,7 @@ const Blog = ({ blog, updateLikes, user, removeBlogById }) => {
             <button onClick={removeBlog}>poista</button>
           )}
         </div> ) : (
-        <div style={blogStyle}>{blog.title} {blog.author} <button onClick={() => setVisible(true)}>näytä</button>
+        <div style={blogStyle} className='hiddenBlog'>{blog.title} {blog.author} <button onClick={() => setVisible(true)}>näytä</button>
         </div>
       )}
     </div>

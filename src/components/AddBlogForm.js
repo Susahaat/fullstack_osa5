@@ -6,7 +6,8 @@ const AddBlogForm = ({ createBlog }) => {
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
 
-  const handleAddNew = () => {
+  const handleAddNew = (e) => {
+    e.preventDefault()
     createBlog({
       title: title,
       author: author,
@@ -39,15 +40,15 @@ const AddBlogForm = ({ createBlog }) => {
       <form onSubmit={handleAddNew}>
         <div>
             Nimi:
-          <input type="text" value={title} name="Title" onChange={handleTitleChange}/>
+          <input type="text" value={title} name="Title" id="title-input" onChange={handleTitleChange}/>
         </div>
         <div>
             Kirjoittaja:
-          <input type="text" value={author} name="Author" onChange={handleAuthorChange}/>
+          <input type="text" value={author} name="Author" id="author-input" onChange={handleAuthorChange}/>
         </div>
         <div>
             Url:
-          <input type="text" value={url} name="Url" onChange={handleUrlChange}/>
+          <input type="text" value={url} name="Url" id="url-input" onChange={handleUrlChange}/>
         </div>
         <button type="submit">Lisää</button>
       </form>
